@@ -10,3 +10,42 @@ const submitScoreElement = document.getElementById('submit-score');
 const finalScore = document.getElementById('user-score');
 const highscoreContainerElement = document.getElementById('highscore-containe');
 const viewButtonsElement = document.getElementById('view-score-button');
+
+const questions = [
+    {
+        question: 'What does HTML stand for?',
+        answers: [
+            { text: 'Hidden Made-up Language', correct: false },
+            { text: 'Hypertext Markup Language', correct: true },
+            { text: 'Hypertext Made-up Language', correct: false },
+            { text: 'Hidden Markup Language', correct: false}
+        ]
+    }, 
+    {
+        question: 'Which of the following is not a string?',
+        answers: [
+            { text: '"one"', correct: false },
+            { text: '"1"', correct: false },
+            { text: 'true', correct: true },
+            { text: '"true"', correct: false}
+        ]
+    }, 
+    {
+        question: 'Fill in the blank: A(n) ____ is a data type used to describe values being true or false.',
+        answers: [
+            { text: 'Integer', correct: false },
+            { text: 'String', correct: false },
+            { text: 'Boolean', correct: true },
+            { text: 'Variable', correct: false}
+        ]
+    }, 
+    {
+        question: 'Which of the following is an example of a semantic tag?',
+        answers: [
+            { text: '<div>', correct: false },
+            { text: '<head>', correct: false },
+            { text: '<aside>', correct: true },
+            { text: '<p>', correct: false}
+        ]
+    }
+]
