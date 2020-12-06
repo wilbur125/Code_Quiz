@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='style.css'>
+    <title>Code Quiz</title>
+</head>
+<body>
+    <div class ="container">
+        <div id="welcome-container">
+            <h2>Code Quiz Challenge!</h2>
+            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds.</p>
+            <p>Click 'Start' to begin!</p>
+        </div>
+        <div id="timer-container" class='hide'>
+            <div id="timer">Timer</div>
+        </div>
+        <div id="question-container" class='hide'>
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+        </div>
+        <div id="finished-container" class="hide">
+            <h2>All done!</h2>
+            <div id="final-score"></div>
+            <div id="submit-score">
+                <span>Enter your intials:</span>
+                <input type="text" id="user">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+        <div id="highscore-container" class="hide">
+            <h2>High Scores</h2>
+            <ol id="highscores">
+               <li id="user-highscore"></li> 
+            </ol>
+        </div> 
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn hide">Next</button>
+            <button id="highscore-btn" class="highscore-btn btn">View High Scores</button>
+            <button id="back-btn" class="back-btn btn hide">Go Back</button>
+            <button id="clear-btn" class="clear-btn btn hide">Clear High Scores</button>
+        </div>
+    </div>
+    <script src='script.js'></script>
+</body>
+</html>
