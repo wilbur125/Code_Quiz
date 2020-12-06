@@ -1,5 +1,6 @@
 const startButton = document.getElementById('start-btn');
 const viewScoresButton = document.getElementById('highscore-btn');
+const timeRemaining = document.getElementById('time-remaining');
 const nextButton = document.getElementById('next-btn');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
@@ -10,6 +11,10 @@ const submitScoreElement = document.getElementById('submit-score');
 const finalScore = document.getElementById('user-score');
 const highscoreContainerElement = document.getElementById('highscore-containe');
 const viewButtonsElement = document.getElementById('view-score-button');
+
+const totalSeconds = 100;
+const secondsElapsed = 0;
+let interval;
 
 const questions = [
     {
@@ -49,3 +54,37 @@ const questions = [
         ]
     }
 ]
+
+function startQuiz() {
+
+}
+
+function setNextQuestion() {
+
+}
+
+function displayQuestion () {
+
+}
+
+function resetState() {
+
+}
+
+function selectAnswer() {
+
+}
+
+function endQuiz () {
+
+}
+
+function renderTime() {
+
+}
+
+function stopTime() {
+
+}
+
+
