@@ -26,6 +26,8 @@ body {
     border-radius: 5px;
     padding: 10x;
     box-shadow: 0 0 10px 2px;
+    justify-content: center;
+    align-items: center;
 }
 
 .btn-grid {
@@ -57,7 +59,7 @@ body {
     --hue: var(--hue-wrong);
 }
 
-.start-btn, .next-btn {
+.start-btn, .next-btn, .highscore-btn {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 10px 20px;
