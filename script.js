@@ -8,14 +8,18 @@ const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
 const timerContainerElement = document.getElementById('timer-container');
 const finishedContainerElement = document.getElementById('finished-container');
-const submitScoreElement = document.getElementById('submit-score');
+const inputScoreButton = document.getElementById('submit-btn');
 const userScore = document.getElementById('user-score');
+const userId = document.getElementById('user-id');
 const highscoreContainerElement = document.getElementById('highscore-container');
-const viewButtonsElement = document.getElementById('highscore-btn');
-const wrongAnswer = document.getElementsByClassName('btn wrong');
+const viewScoresElement = document.getElementById('highscore-btn');
+const viewScoreButtons = document.getElementById('view-score-buttons');
+const backButton = document.getElementById('back-btn')
+const clearButton = document.getElementById('clear-btn')
+const viewButtonsElement = document.getElementById('welcome-btn-group');
+const highScores = document.getElementById("highscores");
 
-let timeLeft = 100;
-
+let quizQuestions, currentQuestionIndex, timeLeft, timerId;
 
 const questions = [
     {
@@ -56,9 +60,8 @@ const questions = [
     }
 ]
 
-let quizQuestions, currentQuestionIndex, timerId;
-
 function startQuiz() {
+    timeLeft = 100;
     timerId = setInterval(countdown, 1000);
     startButton.classList.add('hide');
     welcomeContainerElement.classList.add('hide');
@@ -153,10 +156,47 @@ function displayScore() {
     userScore.innerHTML = timeLeft;
 }
 
+function submitScore() {
+    finishedContainerElement.classList.add('hide');
+    highscoreContainerElement.classList.remove('hide');
+    const initials = userId.value; 
+    const newHighScore = document.createElement('li');
+    newHighScore.innerHTML = initials + " Score: " + timeLeft;
+    highScores.appendChild(newHighScore);    
+}
+
+function returnHome() {
+    welcomeContainerElement.classList.remove('hide');
+    highscoreContainerElement.classList.add('hide');
+    viewButtonsElement.classList.remove('hide');
+    startButton.classList.remove('hide');
+    timerContainerElement.classList.add('hide');
+}
+
+function clearScores() {
+    for (let i = 0; i < highScores.childNodes.length; i++) {
+        highScores.removeChild(highScores.childNodes[i]);
+    }
+}
+
+function viewScores() {
+    welcomeContainerElement.classList.add('hide');
+    highscoreContainerElement.classList.remove('hide');
+    backButton.classList.remove('hide');
+    clearButton.classList.remove('hide');
+    viewButtonsElement.classList.add('hide');
+
+}
+
 startButton.addEventListener('click', startQuiz);
 startButton.addEventListener('click', countdown);
 nextButton.addEventListener('click', ( ) => {
     currentQuestionIndex++;
     setNextQuestion()
 });
+inputScoreButton.addEventListener('click', submitScore);
+backButton.addEventListener('click', returnHome);
+clearButton.addEventListener('click', clearScores);
+viewScoresElement.addEventListener('click', viewScores);
+
 

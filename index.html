@@ -32,24 +32,23 @@
             <div>Your Score is 
                 <span id="user-score"></span>
             </div>
+            <div id="final-score"></div>
             <div id="submit-score">
                 <span>Enter your intials:</span>
-                <input type="text" id="submit-score">
+                <input type="text" id="user-id">
                 <button type="submit" id="submit-btn" class="submit-btn btn">Submit</button>
             </div>
         </div>
         <div id="highscore-container" class="hide">
             <h2>High Scores</h2>
-            <ol id="highscores">
-               <li id="user-highscore"></li> 
-            </ol>
-            <div id="view-score-buttons" class="hide">
-                <button id="back-btn" class="back-btn btn hide">Go Back</button>
-                <button id="clear-btn" class="clear-btn btn hide">Clear High Scores</button>
+            <ol id="highscores"></ol>
+            <div id="view-score-buttons">
+                <button id="back-btn" class="back-btn btn">Go Back</button>
+                <button id="clear-btn" class="clear-btn btn">Clear High Scores</button>
             </div>
         </div> 
         <div class="controls">
-            <div class='welcome-btn-group'>
+            <div class='welcome-btn-group' id='welcome-btn-group'>
                 <button id="start-btn" class="start-btn btn">Start</button>
                 <button id="highscore-btn" class="highscore-btn btn">View High Scores</button>
             </div>    
