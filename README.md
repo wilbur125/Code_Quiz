@@ -15,4 +15,4 @@ https://wilbur125.github.io/Code_Quiz/
 GitHub Repo Link:
 https://github.com/wilbur125/Code_Quiz
 
-![Code Quiz Demo](assets\code_quiz_demo.gif)
+![Code Quiz Demo](./assets/code_quiz_demo.gif)
