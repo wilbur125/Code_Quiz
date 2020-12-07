@@ -51,11 +51,11 @@ body {
     border-color: black;
 }
 
-.btn-correct {
+.btn.correct {
     --hue: var(--hue-correct);
 }
 
-.btn-wrong {
+.btn.wrong {
     --hue: var(--hue-wrong);
 }
 
