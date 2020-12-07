@@ -14,7 +14,6 @@ const highscoreContainerElement = document.getElementById('highscore-container')
 const viewButtonsElement = document.getElementById('highscore-btn');
 
 let timeLeft = 100;
-let timerId = setInterval(countdown, 1000);
 
 const questions = [
     {
@@ -58,6 +57,7 @@ const questions = [
 let quizQuestions, currentQuestionIndex
 
 function startQuiz() {
+    let timerId = setInterval(countdown, 1000);
     startButton.classList.add('hide');
     welcomeContainerElement.classList.add('hide');
     viewButtonsElement.classList.add('hide');
