@@ -12,6 +12,7 @@ const submitScoreElement = document.getElementById('submit-score');
 const finalScore = document.getElementById('user-score');
 const highscoreContainerElement = document.getElementById('highscore-container');
 const viewButtonsElement = document.getElementById('highscore-btn');
+const wrongAnswer = document.getElementsByClassName('btn wrong');
 
 let timeLeft = 100;
 
@@ -99,13 +100,16 @@ function selectAnswer(e) {
     const correct = selectedButton.dataset.correct;
     setStatusClass(document.body, correct);
     Array.from(answerButtonsElement.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct)
+        setStatusClass(button, button.dataset.correct);
     });
     if (quizQuestions.length > currentQuestionIndex + 1) {
        nextButton.classList.remove('hide'); 
     } else {
         startButton.innerText = "Restart";
         startButton.classList.remove('hide');
+    };
+    if (e.target.classList.contains("wrong")) {
+        timeLeft = timeLeft - 10;
     }
 }
 
@@ -147,3 +151,4 @@ nextButton.addEventListener('click', ( ) => {
     currentQuestionIndex++;
     setNextQuestion()
 });
+
