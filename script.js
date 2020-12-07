@@ -9,12 +9,13 @@ const answerButtonsElement = document.getElementById('answer-buttons');
 const timerContainerElement = document.getElementById('timer-container');
 const finishedContainerElement = document.getElementById('finished-container');
 const submitScoreElement = document.getElementById('submit-score');
-const finalScore = document.getElementById('user-score');
+const userScore = document.getElementById('user-score');
 const highscoreContainerElement = document.getElementById('highscore-container');
 const viewButtonsElement = document.getElementById('highscore-btn');
 const wrongAnswer = document.getElementsByClassName('btn wrong');
 
 let timeLeft = 100;
+
 
 const questions = [
     {
@@ -55,10 +56,10 @@ const questions = [
     }
 ]
 
-let quizQuestions, currentQuestionIndex
+let quizQuestions, currentQuestionIndex, timerId;
 
 function startQuiz() {
-    let timerId = setInterval(countdown, 1000);
+    timerId = setInterval(countdown, 1000);
     startButton.classList.add('hide');
     welcomeContainerElement.classList.add('hide');
     viewButtonsElement.classList.add('hide');
@@ -105,8 +106,7 @@ function selectAnswer(e) {
     if (quizQuestions.length > currentQuestionIndex + 1) {
        nextButton.classList.remove('hide'); 
     } else {
-        startButton.innerText = "Restart";
-        startButton.classList.remove('hide');
+        endQuiz();
     };
     if (e.target.classList.contains("wrong")) {
         timeLeft = timeLeft - 10;
@@ -128,21 +128,29 @@ function clearStatusClass(element) {
 }
 
 function endQuiz () {
-
+    stopTimer();
+    displayScore();
 }
 
 function countdown() {
     timerContainerElement.classList.remove('hide');
     if (timeLeft == -1) {
         clearTimeout(timerId);
+        endQuiz();
     } else {
         timeRemaining.innerHTML = timeLeft;
         timeLeft--;
-    }
+    } 
+}
+
+function stopTimer() {
+    clearTimeout(timerId);
 }
 
 function displayScore() {
-
+    finishedContainerElement.classList.remove('hide');
+    questionContainerElement.classList.add('hide');
+    userScore.innerHTML = timeLeft;
 }
 
 startButton.addEventListener('click', startQuiz);
