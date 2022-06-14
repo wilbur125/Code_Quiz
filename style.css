@@ -74,3 +74,12 @@ body {
 .hide {
     display: none;
 }
+
+#welcome-container, 
+#welcome-btn-group, 
+#timer-container, 
+#question-container, 
+#finished-container, 
+#highscore-container {
+    padding: 10px 20px;
+}
