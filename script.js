@@ -20,6 +20,7 @@ const viewButtonsElement = document.getElementById('welcome-btn-group');
 const highScores = document.getElementById("highscores");
 
 let quizQuestions, currentQuestionIndex, timeLeft, timerId;
+let highScoreHistory = [];
 
 const questions = [
     {
@@ -159,10 +160,32 @@ function displayScore() {
 function submitScore() {
     finishedContainerElement.classList.add('hide');
     highscoreContainerElement.classList.remove('hide');
+    noScoresYet.classList.add('hide');
     const initials = userId.value; 
-    const newHighScore = document.createElement('li');
-    newHighScore.innerHTML = initials + " Score: " + timeLeft;
-    highScores.appendChild(newHighScore);    
+    let newHighScore = { 
+        "user_id": initials,
+        "score": timeLeft
+    };
+    highScoreHistory.push(newHighScore);
+    localStorage.setItem("scores", JSON.stringify(highScoreHistory));
+
+    let storedHighScores = JSON.parse(localStorage.getItem("scores"));
+
+    storedHighScores.sort((a, b) => {
+        return b.score - a.score;
+    });
+    
+    highScores.innerHTML = storedHighScores.map(function(storedHighScore) {
+        return (
+            `
+                <li>
+                    ${storedHighScore.user_id}: Score: ${storedHighScore.score}
+                </li> 
+            `
+        )
+    }).join(''); 
+ 
+       
 }
 
 function returnHome() {
@@ -171,12 +194,19 @@ function returnHome() {
     viewButtonsElement.classList.remove('hide');
     startButton.classList.remove('hide');
     timerContainerElement.classList.add('hide');
+    clearedSuccess.classList.add('hide');
 }
 
 function clearScores() {
-    for (let i = 0; i < highScores.childNodes.length; i++) {
-        highScores.removeChild(highScores.childNodes[i]);
+    localStorage.clear();
+    highScoreHistory = [];
+    function removeAllChildNodes(parent) {
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
     }
+    removeAllChildNodes(highScores);
+    clearedSuccess.classList.remove('hide');
 }
 
 function viewScores() {
@@ -185,18 +215,41 @@ function viewScores() {
     backButton.classList.remove('hide');
     clearButton.classList.remove('hide');
     viewButtonsElement.classList.add('hide');
+    
+    let storedHighScores = JSON.parse(localStorage.getItem("scores"));
 
+    if (storedHighScores === null) {
+        noScoresYet.classList.remove('hide');
+    } else {
+
+        highScores.innerHTML = storedHighScores.map(function(storedHighScore) {
+            return (
+                `
+                    <li>
+                        ${storedHighScore.user_id}: Score: ${storedHighScore.score}
+                    </li> 
+                `
+            )
+        }).join(''); 
+    }
 }
 
 startButton.addEventListener('click', startQuiz);
 startButton.addEventListener('click', countdown);
+
+
 nextButton.addEventListener('click', ( ) => {
     currentQuestionIndex++;
     setNextQuestion()
 });
+
 inputScoreButton.addEventListener('click', submitScore);
+
+
 backButton.addEventListener('click', returnHome);
 clearButton.addEventListener('click', clearScores);
+
+
 viewScoresElement.addEventListener('click', viewScores);
 
 
