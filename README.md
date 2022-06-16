@@ -36,7 +36,7 @@
 
   ## Contributing
 
-  PLease contact me via email before submitting a pull request.
+  Please contact me via email before submitting a pull request.
 
   ## Tests
 
@@ -44,7 +44,7 @@
 
   ## Questions
 
-  If you have any questions, please feel free to reach out to me via email at wilbur125dev@gmail.com
+  If you have any questions, please feel free to reach out to me via email at matt@wilbur125.dev
 
   To view more of my work, please visit my GitHub at www.github.com/wilbur125
   
